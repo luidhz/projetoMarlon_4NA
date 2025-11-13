@@ -1,0 +1,233 @@
+ion-content {
+  --background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-content::part(background) {
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-content::part(scroll) {
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-header ion-toolbar {
+  --background: #030F18;
+  --color: #f0e6d2;
+  --border-color: transparent;
+}
+
+.titulo-cabecalho {
+  color: #c8aa6e;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+
+.container-conteudo {
+  padding: 20px;
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+  min-height: 100vh;
+}
+
+// Seção Hero
+.secao-hero {
+  text-align: center;
+  padding: 80px 0 30px 0;
+  margin-bottom: 20px;
+  background: transparent;
+  
+  .titulo-principal {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #c8aa6e;
+    margin: 0;
+    letter-spacing: 3px;
+  }
+  
+  .subtitulo {
+    color: #a09b8c;
+    font-size: 1rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+}
+
+// Seção de Busca
+.secao-busca {
+  margin-bottom: 20px;
+  
+  ion-searchbar {
+    --background: #1e2328;
+    --color: #f0e6d2;
+    --placeholder-color: #5b5a56;
+    --icon-color: #785a28;
+    --border-radius: 10px;
+  }
+}
+
+// Filtro de Funções
+.filtro-funcoes {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ion-chip {
+    --background: #1e2328;
+    color: #a09b8c;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &.ativo {
+      --background: #785a28;
+      color: #f0e6d2;
+      border-color: #c8aa6e;
+      box-shadow: 0 0 20px rgba(120, 90, 40, 0.5);
+    }
+    
+    ion-icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+// Carregamento
+.container-carregamento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #a09b8c;
+  
+  ion-spinner {
+    margin-bottom: 20px;
+    --color: #c28f2c;
+    transform: scale(1.5);
+  }
+}
+
+// Grade de Campeões
+.grade-campeoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 15px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card-campeao {
+  background: #1e2328;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #1e2328;
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #785a28;
+    box-shadow: 0 10px 40px rgba(120, 90, 40, 0.4);
+    
+    .sobreposicao-card {
+      opacity: 1;
+    }
+  }
+  
+  .wrapper-imagem-card {
+    position: relative;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .sobreposicao-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(194, 143, 44, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      
+      .icone-visualizar {
+        font-size: 3rem;
+        color: #0a0e27;
+      }
+    }
+  }
+  
+  ion-card-header {
+    padding: 12px;
+    
+    ion-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0e6d2;
+      margin-bottom: 5px;
+    }
+    
+    ion-card-subtitle {
+      font-size: 0.75rem;
+      color: #a09b8c;
+      font-style: italic;
+    }
+  }
+  
+  ion-card-content {
+    padding: 0 12px 12px;
+    
+    .tags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      
+      ion-badge {
+        --background: rgba(194, 143, 44, 0.2);
+        --color: #c28f2c;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border: 1px solid #c28f2c;
+      }
+    }
+  }
+}
+
+// Estado Vazio
+.estado-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #5b5a56;
+  
+  ion-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.1rem;
+  }
+}

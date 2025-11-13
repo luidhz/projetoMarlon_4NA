@@ -1,0 +1,284 @@
+ion-content {
+  --background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-content::part(background) {
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-content::part(scroll) {
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #030F18;
+    --color: #c8aa6e;
+    
+    ion-button {
+      color: #c8aa6e !important;
+    }
+    
+    ion-icon {
+      color: #c8aa6e !important;
+      font-size: 32px !important;
+      font-weight: bold !important;
+    }
+    
+    ion-title {
+      color: #c8aa6e;
+      font-weight: 700;
+    }
+  }
+}
+
+// Carregamento
+.container-carregamento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  color: #a09b8c;
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+  min-height: 100vh;
+  
+  ion-spinner {
+    margin-bottom: 20px;
+    --color: #c28f2c;
+    transform: scale(1.5);
+  }
+}
+
+// Detalhes do Campeão
+.detalhes-campeao {
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, #030F18 0%, #082937 100%);
+  min-height: 100vh;
+}
+
+// Hero Splash
+.hero-splash {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  
+  .sobreposicao-hero {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 30px;
+    background: linear-gradient(to top, rgba(3, 15, 24, 1) 0%, rgba(3, 15, 24, 0) 100%);
+    
+    .nome-campeao {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #f0e6d2;
+      margin: 0 0 10px 0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      letter-spacing: 2px;
+    }
+    
+    .titulo-campeao {
+      font-size: 1rem;
+      color: #c28f2c;
+      margin: 0;
+      font-style: italic;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+// Informações do Campeão
+.info-campeao {
+  padding: 20px;
+}
+
+.secao-info {
+  margin-bottom: 30px;
+  
+  .titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #c28f2c;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(194, 143, 44, 0.3);
+    
+    ion-icon {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Tags
+.container-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+  .chip-funcao {
+    --background: rgba(194, 143, 44, 0.2);
+    --color: #c28f2c;
+    font-weight: 700;
+    border: 2px solid #c28f2c;
+    padding: 8px 16px;
+  }
+}
+
+// História
+.texto-historia {
+  color: #a09b8c;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+// Grade de Atributos
+.grade-atributos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.item-atributo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: rgba(30, 35, 40, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(194, 143, 44, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    border-color: #c28f2c;
+    box-shadow: 0 5px 20px rgba(194, 143, 44, 0.2);
+  }
+  
+  ion-icon {
+    font-size: 2rem;
+  }
+  
+  .info-atributo {
+    display: flex;
+    flex-direction: column;
+    
+    .rotulo-atributo {
+      font-size: 0.8rem;
+      color: #5b5a56;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .valor-atributo {
+      font-size: 1.2rem;
+      color: #f0e6d2;
+      font-weight: 700;
+    }
+  }
+}
+
+// Habilidades
+.card-habilidade {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: rgba(30, 35, 40, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(194, 143, 44, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: #c28f2c;
+    box-shadow: 0 5px 20px rgba(194, 143, 44, 0.2);
+  }
+  
+  &.passiva {
+    border-color: #8b6914;
+    background: rgba(139, 105, 20, 0.1);
+  }
+  
+  .icone-habilidade {
+    position: relative;
+    flex-shrink: 0;
+    
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      border: 2px solid #c28f2c;
+    }
+    
+    .tecla-habilidade {
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      background: #c28f2c;
+      color: #0a0e27;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      border: 2px solid #0a0e27;
+    }
+  }
+  
+  .conteudo-habilidade {
+    flex: 1;
+    
+    .nome-habilidade {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f0e6d2;
+      margin: 0 0 8px 0;
+    }
+    
+    .descricao-habilidade {
+      color: #a09b8c;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0 0 10px 0;
+    }
+    
+    .stats-habilidade {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      
+      span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        color: #c28f2c;
+        font-weight: 600;
+        
+        ion-icon {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

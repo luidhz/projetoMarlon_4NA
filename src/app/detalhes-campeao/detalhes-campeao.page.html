@@ -1,0 +1,155 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #030F18; --color: #f0e6d2;">
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="campeao">{{ campeao.name | uppercase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-no-padding">
+  
+  <!-- Carregamento -->
+  <div *ngIf="carregando" class="container-carregamento">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p>Carregando informações...</p>
+  </div>
+
+  <!-- Detalhes do Campeão -->
+  <div *ngIf="!carregando && campeao" class="detalhes-campeao">
+    
+    <!-- Hero Splash Art -->
+    <div class="hero-splash">
+      <img [src]="obterSplashCampeao()" [alt]="campeao.name" />
+      <div class="sobreposicao-hero">
+        <h1 class="nome-campeao">{{ campeao.name }}</h1>
+        <p class="titulo-campeao">{{ campeao.title }}</p>
+      </div>
+    </div>
+
+    <!-- Informações do Campeão -->
+    <div class="info-campeao">
+      
+      <!-- Tags/Funções -->
+      <div class="secao-info">
+        <h2 class="titulo-secao">
+          <ion-icon name="star-outline"></ion-icon>
+          FUNÇÕES
+        </h2>
+        <div class="container-tags">
+          <ion-chip *ngFor="let tag of campeao.tags" color="primary" class="chip-funcao">
+            <ion-label>{{ tag | traducaoFuncao }}</ion-label>
+          </ion-chip>
+        </div>
+      </div>
+
+      <!-- História -->
+      <div class="secao-info">
+        <h2 class="titulo-secao">
+          <ion-icon name="book-outline"></ion-icon>
+          HISTÓRIA
+        </h2>
+        <p class="texto-historia">{{ campeao.lore }}</p>
+      </div>
+
+      <!-- Atributos -->
+      <div class="secao-info">
+        <h2 class="titulo-secao">
+          <ion-icon name="bar-chart-outline"></ion-icon>
+          ATRIBUTOS
+        </h2>
+        <div class="grade-atributos">
+          <div class="item-atributo">
+            <ion-icon name="heart" color="danger"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">HP</span>
+              <span class="valor-atributo">{{ campeao.stats.hp }}</span>
+            </div>
+          </div>
+          <div class="item-atributo">
+            <ion-icon name="flash" color="primary"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">Mana</span>
+              <span class="valor-atributo">{{ campeao.stats.mp }}</span>
+            </div>
+          </div>
+          <div class="item-atributo">
+            <ion-icon name="fitness" color="warning"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">Ataque</span>
+              <span class="valor-atributo">{{ campeao.stats.attackdamage }}</span>
+            </div>
+          </div>
+          <div class="item-atributo">
+            <ion-icon name="shield" color="success"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">Armadura</span>
+              <span class="valor-atributo">{{ campeao.stats.armor }}</span>
+            </div>
+          </div>
+          <div class="item-atributo">
+            <ion-icon name="walk" color="tertiary"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">Velocidade</span>
+              <span class="valor-atributo">{{ campeao.stats.movespeed }}</span>
+            </div>
+          </div>
+          <div class="item-atributo">
+            <ion-icon name="locate" color="medium"></ion-icon>
+            <div class="info-atributo">
+              <span class="rotulo-atributo">Alcance</span>
+              <span class="valor-atributo">{{ campeao.stats.attackrange }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Habilidades -->
+      <div class="secao-info">
+        <h2 class="titulo-secao">
+          <ion-icon name="flame-outline"></ion-icon>
+          HABILIDADES
+        </h2>
+
+        <!-- Passiva -->
+        <div class="card-habilidade passiva">
+          <div class="icone-habilidade">
+            <img [src]="obterImagemPassiva(campeao.passive.image.full)" [alt]="campeao.passive.name" />
+            <div class="tecla-habilidade">P</div>
+          </div>
+          <div class="conteudo-habilidade">
+            <h3 class="nome-habilidade">{{ campeao.passive.name }}</h3>
+            <p class="descricao-habilidade">{{ campeao.passive.description }}</p>
+          </div>
+        </div>
+
+        <!-- Habilidades Q, W, E, R -->
+        <div class="card-habilidade" *ngFor="let habilidade of campeao.spells; let i = index">
+          <div class="icone-habilidade">
+            <img [src]="obterImagemHabilidade(habilidade.image.full)" [alt]="habilidade.name" />
+            <div class="tecla-habilidade">{{ ['Q', 'W', 'E', 'R'][i] }}</div>
+          </div>
+          <div class="conteudo-habilidade">
+            <h3 class="nome-habilidade">{{ habilidade.name }}</h3>
+            <p class="descricao-habilidade">{{ habilidade.description }}</p>
+            <div class="stats-habilidade">
+              <span *ngIf="habilidade.cooldownBurn !== '0'" class="cooldown">
+                <ion-icon name="time-outline"></ion-icon> {{ habilidade.cooldownBurn }}s
+              </span>
+              <span *ngIf="habilidade.costBurn !== '0'" class="custo">
+                <ion-icon name="water-outline"></ion-icon> {{ habilidade.costBurn }}
+              </span>
+              <span *ngIf="habilidade.rangeBurn !== 'self'" class="alcance">
+                <ion-icon name="expand-outline"></ion-icon> {{ habilidade.rangeBurn }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
