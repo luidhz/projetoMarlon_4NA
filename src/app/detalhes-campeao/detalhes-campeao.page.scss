@@ -32,7 +32,7 @@ ion-header {
   }
 }
 
-// Carregamento
+
 .container-carregamento {
   display: flex;
   flex-direction: column;
@@ -50,14 +50,13 @@ ion-header {
   }
 }
 
-// Detalhes do Campeão
 .detalhes-campeao {
   padding-bottom: 40px;
   background: linear-gradient(180deg, #030F18 0%, #082937 100%);
   min-height: 100vh;
 }
 
-// Hero Splash
+
 .hero-splash {
   position: relative;
   height: 400px;
@@ -97,7 +96,7 @@ ion-header {
   }
 }
 
-// Informações do Campeão
+
 .info-campeao {
   padding: 20px;
 }
@@ -122,7 +121,7 @@ ion-header {
   }
 }
 
-// Tags
+
 .container-tags {
   display: flex;
   gap: 10px;
@@ -137,7 +136,7 @@ ion-header {
   }
 }
 
-// História
+
 .texto-historia {
   color: #a09b8c;
   line-height: 1.8;
@@ -145,7 +144,7 @@ ion-header {
   text-align: justify;
 }
 
-// Grade de Atributos
+
 .grade-atributos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -195,7 +194,7 @@ ion-header {
   }
 }
 
-// Habilidades
+
 .card-habilidade {
   display: flex;
   gap: 15px;

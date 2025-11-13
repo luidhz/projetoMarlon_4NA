@@ -9,13 +9,13 @@
 <ion-content [fullscreen]="true" class="ion-no-padding">
   <div class="container-conteudo">
     
-    <!-- Seção Hero -->
+   
     <div class="secao-hero">
       <h1 class="titulo-principal">CAMPEÕES</h1>
       <p class="subtitulo">Escolha seu lutador e domine a Fenda</p>
     </div>
 
-    <!-- Barra de Busca -->
+  
     <div class="secao-busca">
       <ion-searchbar
         [(ngModel)]="termoBusca"
@@ -26,7 +26,6 @@
       </ion-searchbar>
     </div>
 
-    <!-- Filtro de Funções -->
     <div class="filtro-funcoes">
       <ion-chip 
         *ngFor="let funcao of funcoes"
@@ -38,13 +37,13 @@
       </ion-chip>
     </div>
 
-    <!-- Carregamento -->
+  
     <div *ngIf="carregando" class="container-carregamento">
       <ion-spinner name="crescent" color="primary"></ion-spinner>
       <p>Carregando campeões...</p>
     </div>
 
-    <!-- Grade de Campeões -->
+  
     <div class="grade-campeoes" *ngIf="!carregando">
       <ion-card 
         *ngFor="let campeao of campeoesFiltrados"
@@ -76,7 +75,7 @@
       </ion-card>
     </div>
 
-    <!-- Estado Vazio -->
+
     <div *ngIf="!carregando && campeoesFiltrados.length === 0" class="estado-vazio">
       <ion-icon name="search-outline" color="medium"></ion-icon>
       <p>Nenhum campeão encontrado</p>

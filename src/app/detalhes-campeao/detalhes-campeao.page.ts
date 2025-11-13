@@ -28,7 +28,7 @@ export class DetalhesCampeaoPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Recebendo parâmetro pela rota (requisito extra - 1 ponto)
+  
     this.rota.params.subscribe(params => {
       this.idCampeao = params['id'];
       this.carregarDetalheCampeao();
