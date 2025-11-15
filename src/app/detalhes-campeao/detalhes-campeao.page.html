@@ -11,16 +11,16 @@
 
 <ion-content [fullscreen]="true" class="ion-no-padding">
   
-  
+  <!-- Carregamento -->
   <div *ngIf="carregando" class="container-carregamento">
     <ion-spinner name="crescent" color="primary"></ion-spinner>
     <p>Carregando informações...</p>
   </div>
 
- 
+  <!-- Detalhes do Campeão -->
   <div *ngIf="!carregando && campeao" class="detalhes-campeao">
     
- 
+    <!-- Hero Splash Art -->
     <div class="hero-splash">
       <img [src]="obterSplashCampeao()" [alt]="campeao.name" />
       <div class="sobreposicao-hero">
@@ -29,10 +29,10 @@
       </div>
     </div>
 
-   
+    <!-- Informações do Campeão -->
     <div class="info-campeao">
       
-    
+      <!-- Tags/Funções -->
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="star-outline"></ion-icon>
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-    
+      <!-- História -->
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="book-outline"></ion-icon>
@@ -54,7 +54,7 @@
         <p class="texto-historia">{{ campeao.lore }}</p>
       </div>
 
-     
+      <!-- Atributos -->
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="bar-chart-outline"></ion-icon>
@@ -106,14 +106,14 @@
         </div>
       </div>
 
-    
+      <!-- Habilidades -->
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="flame-outline"></ion-icon>
           HABILIDADES
         </h2>
 
-  
+        <!-- Passiva -->
         <div class="card-habilidade passiva">
           <div class="icone-habilidade">
             <img [src]="obterImagemPassiva(campeao.passive.image.full)" [alt]="campeao.passive.name" />
@@ -121,11 +121,11 @@
           </div>
           <div class="conteudo-habilidade">
             <h3 class="nome-habilidade">{{ campeao.passive.name }}</h3>
-            <p class="descricao-habilidade">{{ campeao.passive.description }}</p>
+            <p class="descricao-habilidade" [innerHTML]="limparHTML(campeao.passive.description)"></p>
           </div>
         </div>
 
-    
+        <!-- Habilidades Q, W, E, R -->
         <div class="card-habilidade" *ngFor="let habilidade of campeao.spells; let i = index">
           <div class="icone-habilidade">
             <img [src]="obterImagemHabilidade(habilidade.image.full)" [alt]="habilidade.name" />
@@ -133,7 +133,7 @@
           </div>
           <div class="conteudo-habilidade">
             <h3 class="nome-habilidade">{{ habilidade.name }}</h3>
-            <p class="descricao-habilidade">{{ habilidade.description }}</p>
+            <p class="descricao-habilidade" [innerHTML]="limparHTML(habilidade.description)"></p>
             <div class="stats-habilidade">
               <span *ngIf="habilidade.cooldownBurn !== '0'" class="cooldown">
                 <ion-icon name="time-outline"></ion-icon> {{ habilidade.cooldownBurn }}s
