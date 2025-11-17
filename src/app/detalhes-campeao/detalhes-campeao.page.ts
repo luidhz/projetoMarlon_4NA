@@ -28,7 +28,7 @@ export class DetalhesCampeaoPage implements OnInit {
   ) {}
 
   ngOnInit() {
-  
+    // Recebendo parâmetro pela rota (requisito extra - 1 ponto)
     this.rota.params.subscribe(params => {
       this.idCampeao = params['id'];
       this.carregarDetalheCampeao();
@@ -63,5 +63,16 @@ export class DetalhesCampeaoPage implements OnInit {
 
   obterImagemPassiva(imagemPassiva: string): string {
     return `https://ddragon.leagueoflegends.com/cdn/13.24.1/img/passive/${imagemPassiva}`;
+  }
+
+  limparHTML(texto: string): string {
+    if (!texto) return '';
+    
+    // Remove tags HTML e mantém apenas o texto
+    return texto
+      .replace(/<br>/g, ' ')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&nbsp;/g, ' ')
+      .trim();
   }
 }
