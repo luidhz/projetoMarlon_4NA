@@ -10,29 +10,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-no-padding">
-<<<<<<< HEAD
 
 
-=======
-  
-  <!-- Carregamento -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
   <div *ngIf="carregando" class="container-carregamento">
     <ion-spinner name="crescent" color="primary"></ion-spinner>
     <p>Carregando informações...</p>
   </div>
 
-<<<<<<< HEAD
 
   <div *ngIf="!carregando && campeao" class="detalhes-campeao">
 
 
-=======
-  <!-- Detalhes do Campeão -->
-  <div *ngIf="!carregando && campeao" class="detalhes-campeao">
-    
-    <!-- Hero Splash Art -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
     <div class="hero-splash">
       <img [src]="obterSplashCampeao()" [alt]="campeao.name" />
       <div class="sobreposicao-hero">
@@ -41,17 +29,10 @@
       </div>
     </div>
 
-<<<<<<< HEAD
 
     <div class="info-campeao">
 
 
-=======
-    <!-- Informações do Campeão -->
-    <div class="info-campeao">
-      
-      <!-- Tags/Funções -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="star-outline"></ion-icon>
@@ -64,11 +45,6 @@
         </div>
       </div>
 
-<<<<<<< HEAD
-
-=======
-      <!-- História -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="book-outline"></ion-icon>
@@ -77,11 +53,6 @@
         <p class="texto-historia">{{ campeao.lore }}</p>
       </div>
 
-<<<<<<< HEAD
-
-=======
-      <!-- Atributos -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="bar-chart-outline"></ion-icon>
@@ -133,22 +104,12 @@
         </div>
       </div>
 
-<<<<<<< HEAD
-
-=======
-      <!-- Habilidades -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
       <div class="secao-info">
         <h2 class="titulo-secao">
           <ion-icon name="flame-outline"></ion-icon>
           HABILIDADES
         </h2>
 
-<<<<<<< HEAD
-
-=======
-        <!-- Passiva -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
         <div class="card-habilidade passiva">
           <div class="icone-habilidade">
             <img [src]="obterImagemPassiva(campeao.passive.image.full)" [alt]="campeao.passive.name" />
@@ -160,11 +121,6 @@
           </div>
         </div>
 
-<<<<<<< HEAD
-
-=======
-        <!-- Habilidades Q, W, E, R -->
->>>>>>> 2448260de5bfc458d4a9f8c1c8229e3db7413fd1
         <div class="card-habilidade" *ngFor="let habilidade of campeao.spells; let i = index">
           <div class="icone-habilidade">
             <img [src]="obterImagemHabilidade(habilidade.image.full)" [alt]="habilidade.name" />

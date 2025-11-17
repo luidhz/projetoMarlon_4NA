@@ -1,21 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar style="--background: #030F18; --color: #f0e6d2;">
     <ion-title class="ion-text-center">
-      <div class="titulo-cabecalho">LEAGUE OF LEGENDS</div>
+      <div class="titulo-cabecalho">League of Wiki</div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-no-padding">
   <div class="container-conteudo">
-    
-   
+
+
     <div class="secao-hero">
       <h1 class="titulo-principal">CAMPEÕES</h1>
-      <p class="subtitulo">Escolha seu lutador e domine a Fenda</p>
+      <p class="subtitulo">Escolha seu lutador e domine o Rift</p>
     </div>
 
-  
+
     <div class="secao-busca">
       <ion-searchbar
         [(ngModel)]="termoBusca"
@@ -27,7 +27,7 @@
     </div>
 
     <div class="filtro-funcoes">
-      <ion-chip 
+      <ion-chip
         *ngFor="let funcao of funcoes"
         (click)="filtrarPorFuncao(funcao.nome)"
         [class.ativo]="funcaoSelecionada === funcao.nome"
@@ -37,36 +37,36 @@
       </ion-chip>
     </div>
 
-  
+
     <div *ngIf="carregando" class="container-carregamento">
       <ion-spinner name="crescent" color="primary"></ion-spinner>
       <p>Carregando campeões...</p>
     </div>
 
-  
+
     <div class="grade-campeoes" *ngIf="!carregando">
-      <ion-card 
+      <ion-card
         *ngFor="let campeao of campeoesFiltrados"
         (click)="verDetalhesCampeao(campeao.id)"
         class="card-campeao"
         [appDestaqueFuncao]="campeao.tags[0]">
-        
+
         <div class="wrapper-imagem-card">
           <img [src]="obterImagemCampeao(campeao.id)" [alt]="campeao.name" />
           <div class="sobreposicao-card">
             <ion-icon name="eye-outline" class="icone-visualizar"></ion-icon>
           </div>
         </div>
-        
+
         <ion-card-header>
           <ion-card-title>{{ campeao.name }}</ion-card-title>
           <ion-card-subtitle>{{ campeao.title }}</ion-card-subtitle>
         </ion-card-header>
-        
+
         <ion-card-content>
           <div class="tags">
-            <ion-badge 
-              *ngFor="let tag of campeao.tags" 
+            <ion-badge
+              *ngFor="let tag of campeao.tags"
               color="primary">
               {{ tag | traducaoFuncao }}
             </ion-badge>
