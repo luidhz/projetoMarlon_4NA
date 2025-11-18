@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CampeoesService } from '../servicos/campeoes.service';
 import { TraducaoFuncaoPipe } from '../pipes/traducao-funcao.pipe';
+import { addIcons } from 'ionicons';
+import { arrowBack } from 'ionicons/icons';
 
 @Component({
   selector: 'app-detalhes-campeao',
@@ -25,7 +27,9 @@ export class DetalhesCampeaoPage implements OnInit {
     private rota: ActivatedRoute,
     private router: Router,
     private servicoCampeoes: CampeoesService
-  ) {}
+  ) {
+    addIcons({ arrowBack })
+  }
 
   ngOnInit() {
     // Recebendo parâmetro pela rota (requisito extra - 1 ponto)
